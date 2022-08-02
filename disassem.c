@@ -10,36 +10,6 @@ word Disassem(word addr, char* dest) {
          sprintf(tmp,"             NOP");
          addr += 1;
          break;
-    case 0x01:
-         break;
-    case 0x02:
-         break;
-    case 0x03:
-         break;
-    case 0x04:
-         break;
-    case 0x05:
-         break;
-    case 0x06:
-         break;
-    case 0x07:
-         break;
-    case 0x08:
-         break;
-    case 0x09:
-         break;
-    case 0x0a:
-         break;
-    case 0x0b:
-         break;
-    case 0x0c:
-         break;
-    case 0x0d:
-         break;
-    case 0x0e:
-         break;
-    case 0x0f:
-         break;
     case 0x10:
          sprintf(tmp,"%02x           JCN    ",rom[addr+1]);
          if (rom[addr] & 0x8) strcat(tmp,"N");
@@ -1086,12 +1056,8 @@ word Disassem(word addr, char* dest) {
          sprintf(tmp,"             DCL");
          addr += 1;
          break;
-    case 0xfe:
-         break;
-    case 0xff:
-         break;
     default: 
-         sprintf(tmp,"              DB   %02x",rom[addr]); addr++; break;
+         sprintf(tmp,"             DB   %02x",rom[addr]); addr++; break;
     }
   strcat(dest, tmp);
   return addr;
