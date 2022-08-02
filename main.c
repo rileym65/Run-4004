@@ -10,7 +10,7 @@ void clearMem() {
 
 int main(int argc, char** argv) {
   int i;
-  printf("Run/09 v1.0.0\n");
+  printf("Run/04 v1.0.0\n");
   printf("by Michael H. Riley\n");
 
   use6309 = 0;
