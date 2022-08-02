@@ -1,0 +1,108 @@
+
+  ?              - dump memory
+  ?C             - Show clock ticks since last clock reset
+  ?C-            - Show clock ticks since last clock reset and reset
+  ?P             - dump memory from PC
+  ?R             - Show RAM in current bank
+  ?Rn            - Show RAM in bank n
+  $              - disassemble memory
+  $P             - disassemble memory from PC
+  !addr bb bb .. - store bytes at address
+  !P bb bb  ..   - store bytes at PC
+  @              - run at PC
+  @addr          - set PC to addr then run
+  A=nn           - set A to nn
+  B?             - show break points
+  B+addr         - add break point
+  B-addr         - remove break point
+  BC             - clear all breakpoints
+  C+expr         - Add conditional breakpoint
+  C-num          - Remove specified conditional breakpoint
+  C?             - Show conditional breakpoints
+  C++            - Enable conditional breakpoints
+  C--            - Disable conditional breakpoints
+  CC             - Clear all conditional breakpoints
+  CM=n           - set CM register to n
+  CY=nn          - set CY register to nn
+  INp=n          - Set input port p to n
+  Ir=nn          - Set register par r (0-7) to nn
+  PC=addr        - set PC to addr
+  R              - Reset processor
+  Rn=n           - Set register n (0-f) to n
+  T=n            - Set test input pin to n (0 or 1)
+  T?             - show instruction traps
+  T+bb           - add instruction trap
+  T-bb           - remove instruction trap
+  TC             - clear all traps
+  TR+            - turn on command tracing
+  TR-            - turn off command tracing
+  X=nn           - set X regster to nn
+  /              - exit
+
+
+
+
+  NOP         0000 0000               No operation
+  JCN   c,nn  0001 cccc   mmmm llll   Jump on condition
+  FIM   i,nn  0010 rrr0   hhhh llll   Fetch immediate
+  SRC   i     0010 rrr1               Send register control (ram/port address)
+  FIN   i     0011 rrr0               Fetch indirect
+  JIN   i     0011 rrr1               Jump indirect
+  JUN   nnn   0100 hhhh   mmmm llll   Jump unconditional
+  JMS   nnn   0101 hhhh   mmmm llll   Jump to subroutine
+  INC   i     0110 rrrr               Increment index register
+  ISZ   i,nn  0111 rrrr   mmmm llll   Increment skip if zero
+  ADD   i     1000 rrrr               Add index register to A
+  SUB   i     1001 rrrr               Subtract index register from A
+  LD    i     1010 rrrr               Load A from index register
+  XCH   i     1011 rrrr               Exchange A with index register
+  BBL   n     1100 nnnn               Branch back and load (return)
+  LDM   n     1101 nnnn               Load immediate to A
+
+  CLB         1111 0000               Clear both A and carry
+  CLC         1111 0001               Clear carry
+  IAC         1111 0010               Increment A
+  CMC         1111 0011               Complement carry
+  CMA         1111 0100               Complement A
+  RAL         1111 0101               Rotate A/C left
+  RAR         1111 0110               Rotate A/C right
+  TCC         1111 0111               Transfer carry and clear
+  DAC         1111 1000               Decrement A
+  TCS         1111 1001               Transfer carry subtract and clear
+  STC         1111 1010               Set carry
+  DAA         1111 1011               Decimal adjust A
+  KBP         1111 1100               Keyboard process
+  DCL         1111 1101               Designate command line (selects memory bank)
+
+  WRM         1110 0000               Write RAM
+  WMP         1110 0001               Write RAM port
+  WRR         1110 0010               Write ROM port
+  WR0         1110 0100               Write RAM status 0
+  WR1         1110 0101               Write RAM status 1
+  WR2         1110 0110               Write RAM status 2
+  WR3         1110 0111               Write RAM status 3
+  SBM         1110 1000               Subtract RAM from A
+  RDM         1110 1001               Read RAM
+  RDR         1110 1010               Read ROM port
+  ADM         1110 1011               Add RAM to A
+  RD0         1110 1100               Read RAM status 0
+  RD1         1110 1101               Read RAM status 1
+  RD2         1110 1110               Read RAM status 2
+  RD3         1110 1111               Read RAM status 3
+
+  cccc
+  |||+- Test bit clear
+  ||+-- Carry set
+  |+--- A equals 0
+  +---- Invert test
+
+  rrr
+  000   - Index pair 0,1
+  001   - Index pair 2,3
+  010   - Index pair 4,5
+  011   - Index pair 6,7
+  100   - Index pair 8,9
+  101   - Index pair A,B
+  110   - Index pair C,D
+  111   - Index pair E,F
+
