@@ -1057,7 +1057,7 @@ word Disassem(word addr, char* dest) {
          addr += 1;
          break;
     default: 
-         sprintf(tmp,"             DB   %02x",rom[addr]); addr++; break;
+         sprintf(tmp,"             DB     $%02x",rom[addr]); addr++; break;
     }
   strcat(dest, tmp);
   return addr;
