@@ -606,6 +606,7 @@ void cpu_reset(CPU* cpu) {
 
 void cpu_cycle(CPU* cpu) {
   byte cmd;
+  cpu->ts = 0;
   cmd = readRom(rom, cpu->stack[0]++);
   cpu->opr = (cmd >> 4);
   cpu->opa = (cmd & 0x0f);
